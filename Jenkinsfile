@@ -9,7 +9,7 @@ node {
   def TEST_IMG = docker.build("${IMG_NAME}", "-f Dockerfile .")
   
   stage('Parallels') {
-    parallel (
+    parallel {
       
       'Whoami'{
         TEST_IMG.inside('-u root:root') {
@@ -23,7 +23,7 @@ node {
         }
       }
 
-  )
+    }
   }
        
 }

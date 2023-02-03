@@ -15,7 +15,7 @@ node {
         TEST_IMG.inside('-u root:root') {
           sh 'whoami'
         }
-      }
+      },
       
       'Working dir': {
         TEST_IMG.inside('-u root:root') {

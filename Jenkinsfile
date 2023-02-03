@@ -8,7 +8,7 @@ node {
   
   def TEST_IMG = docker.build("${IMG_NAME}", "-f Dockerfile .")
   
-  stage('Who am I?") {
+  stage('Who am I?') {
         TEST_IMG.inside {
           sh 'whoami'
         }

@@ -8,16 +8,22 @@ node {
   
   def TEST_IMG = docker.build("${IMG_NAME}", "-f Dockerfile .")
   
-  stage('Who am I?') {
+  stage('Parallels') {
+    parallel (
+      
+      'Whoami'{
         TEST_IMG.inside('-u root:root') {
           sh 'whoami'
         }
+      }
+      
+      'Working dir' {
+        TEST_IMG.inside('-u root:root') {
+          sh 'pwd'
+        }
+      }
+
+  )
   }
-  
-   stage('Working dir') {
-     TEST_IMG.inside('-u root:root') {
-       sh 'pwd'
-     }
-   }
-        
+       
 }

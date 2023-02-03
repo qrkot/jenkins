@@ -1,13 +1,15 @@
 pipeline {
   
   agent {
-    docker { image 'node:16.13.1-alpine' }
+    docker {
+      image 'node:16.13.1-alpine'
+      args '-u root:root'
+    }
   }
  
   stages {
     stage('Test') {
       steps {
-        sh "chmod +x -R ${env.WORKSPACE}"
         sh 'node --version'
       }
     }

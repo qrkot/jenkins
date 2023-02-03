@@ -15,7 +15,7 @@ node {
   }
   
    stage('Working dir') {
-     TEST_IMG.inside {
+     TEST_IMG.inside('-u root:root') {
        sh 'pwd'
      }
    }

@@ -9,21 +9,21 @@ node {
   def TEST_IMG = docker.build("${IMG_NAME}", "-f Dockerfile .")
   
   stage('Parallels') {
-    parallel {
+    parallel (
       
-      'Whoami'{
+      'Whoami': {
         TEST_IMG.inside('-u root:root') {
           sh 'whoami'
         }
       }
       
-      'Working dir' {
+      'Working dir': {
         TEST_IMG.inside('-u root:root') {
           sh 'pwd'
         }
       }
 
-    }
+    )
   }
        
 }

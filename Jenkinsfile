@@ -2,7 +2,7 @@ node {
  
   stage('Static Analysis'){
     withSonarQubeEnv('SonarServer'){
-      sh 'sonar-scanner'
+      sh 'sonar-scanner -X'
     }
   }
   
